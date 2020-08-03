@@ -11,9 +11,9 @@ const cors = initMiddleware(
 export default async (req, res) => {
   await cors(req, res);
   const { headers, connection } = req;
-  const ip = headers['x-real-ip'] || connection.remoteAddress;
+  const ipaddress = headers['x-real-ip'] || connection.remoteAddress;
   const language = headers['accept-language'];
   const software = headers['user-agent'];
   res.statusCode = 200;
-  res.json({ ip, language, software });
+  res.json({ ipaddress, language, software });
 };
